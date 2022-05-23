@@ -10,7 +10,14 @@ namespace XlsObserve.Class.xlsServices
     public class XlsServices
     {
 
-
+        /// <summary>
+        /// This method Add data from DataTable as source
+        /// 
+        /// </summary>
+        /// <param name="pathDoXls"></param>
+        /// <param name="dtXls"></param>
+        /// <param name="indexSheet"></param>
+        /// <returns></returns>
         public int AppendData(string pathDoXls, DataTable dtXls, int indexSheet)
         {
             IWorkbook book;
@@ -51,23 +58,29 @@ namespace XlsObserve.Class.xlsServices
 
 
 
-
-        public DataTable Excel_To_DataTable(string pRutaArchivo, int pHojaIndex)
+        /// <summary>
+        /// this method obtains the data from the sheet and 
+        /// transforms it into a DataTable
+        /// </summary>
+        /// <param name="pFilePath"></param>
+        /// <param name="pSheetIndex"></param>
+        /// <returns></returns>
+        public DataTable Excel_To_DataTable(string pFilePath, int pSheetIndex)
         {
             DataTable Tabla = null;
             try
             {
-                if (System.IO.File.Exists(pRutaArchivo))
+                if (System.IO.File.Exists(pFilePath))
                 {
 
                     IWorkbook workbook = null;         
                     ISheet worksheet = null;
                     string first_sheet_name = "";
 
-                    using (FileStream FS = new FileStream(pRutaArchivo, FileMode.Open, FileAccess.Read))
+                    using (FileStream FS = new FileStream(pFilePath, FileMode.Open, FileAccess.Read))
                     {
                         workbook = WorkbookFactory.Create(FS);
-                        worksheet = workbook.GetSheetAt(pHojaIndex);
+                        worksheet = workbook.GetSheetAt(pSheetIndex);
                         first_sheet_name = worksheet.SheetName;         
 
                         Tabla = new DataTable(first_sheet_name);
@@ -213,7 +226,7 @@ namespace XlsObserve.Class.xlsServices
                 }
                 else
                 {
-                    ClsLogs.ErrorLog($"Xls to DataTable, File not found: {pRutaArchivo}");
+                    ClsLogs.ErrorLog($"Xls to DataTable, File not found: {pFilePath}");
 
                 }
             }

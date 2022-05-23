@@ -14,7 +14,11 @@ namespace XlsObserve.Class.FileObserve
         ClsConfiguration conf = new();
         XlsServices oxls = new();
 
-
+        /// <summary>
+        /// This solution was intended to be developed as a 
+        /// windows service, however, to better appreciate 
+        /// its operation it was left as a console application.
+        /// </summary>
         public void start()
         {
 
@@ -28,11 +32,9 @@ namespace XlsObserve.Class.FileObserve
 
             observador.EnableRaisingEvents = true;
 
-            Console.WriteLine(@"
+            
 
-            ");
-
-            Console.WriteLine("enter para terminar");
+            Console.WriteLine("Press Enter Key for end");
             Console.ReadLine();
 
         }

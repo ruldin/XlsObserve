@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace XlsObserve.Class.logs
 {
+    /// <summary>
+    /// This class record logs
+    /// </summary>
     public static class ClsLogs
     {
         public static readonly int info = 1;
