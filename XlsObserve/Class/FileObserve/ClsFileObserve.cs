@@ -80,7 +80,7 @@ namespace XlsObserve.Class.FileObserve
 
         private void OnChange(object source, FileSystemEventArgs e)
         {
-            ClsLogs.StatusTrace($"Getting new file...", ClsLogs.info);
+            ClsLogs.StatusTrace($"Getting a new file...", ClsLogs.info);
             WatcherChangeTypes KindOfChange = e.ChangeType;
             isXls(e.FullPath);
             

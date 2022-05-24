@@ -20,6 +20,8 @@ namespace XlsObserve.Class.xlsServices
         /// <returns></returns>
         public int AppendData(string pathDoXls, DataTable dtXls, int indexSheet)
         {
+            //to use both types of files (xls / xlsx)
+            //dependency injection is used
             IWorkbook book;
             int rowsProcessed = 0;
 
